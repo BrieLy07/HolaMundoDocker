@@ -1,2 +1,19 @@
-print ("Hola mundo, prueba con Docker")
+# app.py
+from http.server import BaseHTTPRequestHandler, HTTPServer
+
+class RequestHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header('Content-type', 'text/plain')
+        self.end_headers()
+        self.wfile.write(b'Hola mundo, prueba con Docker')
+
+def run(server_class=HTTPServer, handler_class=RequestHandler, port=3666):
+    server_address = ('', port)
+    httpd = server_class(server_address, handler_class)
+    print(f'Server running on port {port}...')
+    httpd.serve_forever()
+
+if __name__ == '__main__':
+    run()
 
