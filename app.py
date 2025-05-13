@@ -8,7 +8,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(b'Hola mundo, prueba con Docker')
 
-def run(server_class=HTTPServer, handler_class=RequestHandler, port=3666):
+def run(server_class=HTTPServer, handler_class=RequestHandler, port=8000):
     server_address = ('', port)
     httpd = server_class(server_address, handler_class)
     print(f'Server running on port {port}...')
