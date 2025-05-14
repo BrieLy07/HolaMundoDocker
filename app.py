@@ -1,9 +1,11 @@
 # app.py
+from flask import Flask
 
-def handler(request):
-    return {
-        "statusCode": 200,
-        "body": "Hola mundo, prueba con Docker"
-    }
+app = Flask(__name__)
 
+@app.route('/')
+def hello_world():
+    return 'Hola mundo, prueba con Docker'
 
+if __name__ == '__main__':
+    app.run(debug=True)
